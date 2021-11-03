@@ -1,62 +1,62 @@
 package pb.nikitiuk.HW5;
+import java.util.Arrays;
 import java.util.Scanner;
+
 public class Library {
-    public static void main(String[] args) {
+        private static Object Book;
+
+        public static void main(String[] args) {
+            int bookCount;
 
         Scanner input = new Scanner(System.in);
 
-
-        Reader reader = new Reader();
-        Reader reader1 = new Reader();
-        Reader reader2 = new Reader();
-
-        reader.FIO = "Smith A.A";
-        reader.birth= "12.12.2000";
-        reader.Faculty = "Filfack";
-        reader.number = 1;
-        reader.tel = "+380934455567";
-
-        reader1.FIO = "John A.A";
-        reader1.birth= "12.12.2001";
-        reader1.Faculty = "ekonomika";
-        reader1.number = 2;
-        reader1.tel = "+3809345567";
-
-        reader2.FIO = "Chan J.A";
-        reader2.birth= "12.12.2001";
-        reader2.Faculty = "ekonomika";
-        reader2.number = 2;
-        reader2.tel = "+3809345567";
+{
 
 
-        Book book = new Book();
-        Book book1 = new Book();
-        Book book2 = new Book();
+            Scanner title = new Scanner(System.in);
 
-        book.name = "The Inhabited Island";
-        book.author = "Arkady and Boris Strugatskie";
-        book.year = 1969;
 
-        book1.name = "Night Watch";
-        book1.author = "SIR TERRY PRATCHETT";
-        book1.year =  2020;
+        }
 
-        book2.name = " The Adventures of Sherlock Holmes";
-        book2.author = "Conan Doyle";
-        book2.year = 1891;
+
+        Reader reader = new Reader("Smith A.A", 1,"Filfack","12.12.2000","+380934455567");
+        Reader reader1 = new Reader("John A.A", 2,"Ekonomika","12.12.2001","+7865285");
+        Reader reader2 = new Reader("Chan J.A", 3,"Politics","12.12.2001","+45678388");
+
+Reader [] readers = {reader,reader1,reader2};
+
+
+
+        Book book = new Book("\"The Inhabited Island\"",  "Arkady and Boris Strugatskie",1969);
+        Book book1 = new Book("Night Watch","SIR TERRY PRATCHETT",2002);
+        Book book2 = new Book(" The Adventures of Sherlock Holmes","Conan Doyle",1891);
+Book [] books = {book,book1,book2};
+bookCount = books.length;
+
+
         System.out.println("what you want to do?");
-        System.out.println("Print \"readres\" to find out readers name;");
+        System.out.println("Print \"readers\" to find out readers name;");
         System.out.println("Print \"books\" which books left");
+            System.out.println("Print \"take\" to find out who take which book/s");
         System.out.println("Print \"exit\" to left");
+            System.out.println("Print \"take\" to enter how many books take reader");
         String x = input.next();
- if ("readers".equals(x))
- System.out.println(reader.FIO+"\t"+ reader1.FIO+"\t"+reader2.FIO);
+        if ("readers".equals(x)){
+            System.out.println(reader.getInfoReader() + "\n" + reader1.getInfoReader() + "\n"+ reader2.getInfoReader() + "\n" );}
 
-if ("books".equals(x))
-    System.out.println(book.name + "\t" + book1.name + "\t" + book2.name);
+        if ("books".equals(x))
+           System.out.println(book.getInfoBook() + "\n" + book1.getInfoBook()+ "\n" + book2.getInfoBook() + "\nreaders have "+ bookCount + " books");
 
-if ("exit".equals(x))
-    System.out.println("Bye!");
+        if ("exit".equals(x))
+            System.out.println("Bye!");
+
+          if ("take".equals(x)) {
+
+              reader.takeBook(reader1.getInfoReader());
+          }
+
+
+
 
 
 
